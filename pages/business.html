@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Business - Nibras Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="min-h-screen bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <!-- Header content would be the same as index.html -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-24 bg-gradient-to-br from-[#005670] via-[#004558] to-[#003445] text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Breadcrumb -->
+                <div class="flex items-center text-white text-opacity-80 mb-8 text-sm">
+                    <button onclick="navigateToPage('home')" class="hover:text-white transition-colors cursor-pointer flex items-center">
+                        <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+                    </button>
+                    <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
+                    <span class="text-white">
+                        <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                    </span>
+                </div>
+
+                <div class="text-center">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+                        <span class="nav-text" data-en="We are committed to pioneering the energy of the future on a global scale" data-ar="نحن ملتزمون بريادة طاقة المستقبل على نطاق عالمي">
+                            We are committed to pioneering the energy of the future on a global scale
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Content -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Left Column - Image -->
+                    <div class="relative">
+                        <img
+                            src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                            alt="AES Corporation"
+                            class="w-full h-96 object-cover rounded-2xl shadow-xl"
+                        />
+                    </div>
+                    
+                    <!-- Right Column - Content -->
+                    <div>
+                        <div class="inline-flex items-center px-6 py-3 bg-[#005670] bg-opacity-10 rounded-full mb-6">
+                            <i data-lucide="building-2" class="w-5 h-5 text-[#005670] mr-2"></i>
+                            <span class="text-[#005670] font-semibold text-sm tracking-wide uppercase">
+                                <span class="nav-text" data-en="AES Corporation" data-ar="شركة AES">AES Corporation</span>
+                            </span>
+                        </div>
+                        
+                        <h2 class="text-4xl font-bold text-[#231f20] mb-8 leading-tight">
+                            <span class="nav-text" data-en="AES in Jordan" data-ar="AES في الأردن">AES in Jordan</span>
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                <span class="nav-text" data-en="AES Jordan is part of AES Corporation, a Fortune 200 global energy company operating in 17 countries. With a team of 21,000 people, AES delivers reliable, affordable, and sustainable energy through a diverse mix of technologies and fuels, including renewables." data-ar="AES الأردن جزء من شركة AES، وهي شركة طاقة عالمية من فورتشن 200 تعمل في 17 دولة. مع فريق من 21,000 شخص، تقدم AES طاقة موثوقة وبأسعار معقولة ومستدامة من خلال مزيج متنوع من التقنيات والوقود، بما في ذلك الطاقة المتجددة.">
+                                    AES Jordan is part of AES Corporation, a Fortune 200 global energy company operating in 17 countries. With a team of 21,000 people, AES delivers reliable, affordable, and sustainable energy through a diverse mix of technologies and fuels, including renewables.
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#231f20] text-white">
+        <!-- Footer content would be the same as index.html -->
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

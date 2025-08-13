@@ -1,13 +1,563 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nibras Jordan - Independent Power Producer</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20">
+                <!-- Logo Section -->
+                <div class="flex items-center">
+                    <img
+                        id="logo"
+                        src="/Logo-.png" 
+                        alt="Nebras Power" 
+                        class="h-16 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                    />
+                </div>
+
+                <!-- Content Section -->
+                <div class="flex-1 flex flex-col ml-8">
+                    <!-- Top Row -->
+                    <div class="flex items-center justify-end h-10 border-b border-gray-200">
+                        <button
+                            id="languageToggle"
+                            class="bg-[#005670] hover:bg-[#004558] text-white px-4 py-1.5 rounded text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
+                        >
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            <span id="languageText">العربية</span>
+                        </button>
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="flex-1 flex items-center justify-between">
+                        <!-- Desktop Navigation -->
+                        <nav id="desktopNav" class="hidden lg:flex items-center space-x-8">
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="about">
+                                    <span class="nav-text" data-en="ABOUT US" data-ar="من نحن">ABOUT US</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="sustainability-main">
+                                    <span class="nav-text" data-en="SUSTAINABILITY" data-ar="الاستدامة">SUSTAINABILITY</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="business">
+                                    <span class="nav-text" data-en="OUR BUSINESS" data-ar="أعمالنا">OUR BUSINESS</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="careers">
+                                    <span class="nav-text" data-en="CAREERS" data-ar="الوظائف">CAREERS</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="news">
+                                    <span class="nav-text" data-en="NEWS" data-ar="الأخبار">NEWS</span>
+                                </button>
+                            </div>
+                            <div class="relative">
+                                <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="contact">
+                                    <span class="nav-text" data-en="CONTACT US" data-ar="اتصل بنا">CONTACT US</span>
+                                </button>
+                            </div>
+                        </nav>
+
+                        <!-- Search -->
+                        <div class="hidden lg:flex items-center">
+                            <button id="searchBtn" class="flex items-center space-x-2 text-gray-600 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium nav-text" data-en="Search" data-ar="بحث">Search</span>
+                            </button>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="lg:hidden ml-auto">
+                            <button id="mobileMenuBtn" class="p-2 text-gray-600 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="menu" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden transition-all duration-300 invisible opacity-0">
+            <div class="absolute inset-0 bg-black opacity-50" id="mobileMenuBackdrop"></div>
+            <div id="mobileMenuPanel" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-out translate-x-full">
+                <!-- Menu content will be populated by JavaScript -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <section id="heroSection" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Video Background -->
+            <div class="absolute inset-0 w-full h-full">
+                <video
+                    id="heroVideo"
+                    class="absolute inset-0 w-full h-full object-cover"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+                    <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                    <img
+                        src="https://i.postimg.cc/nzTyB6rp/download.webp"
+                        alt="Powering Jordan's Future"
+                        class="w-full h-full object-cover"
+                    />
+                </video>
+            </div>
+
+            <!-- Video Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#005670] via-[#005670]/60 to-transparent opacity-70"></div>
+            
+            <!-- Video Controls -->
+            <div class="absolute top-6 right-6 z-20 flex space-x-3">
+                <button id="playPauseBtn" class="bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm">
+                    <i data-lucide="pause" class="w-5 h-5"></i>
+                </button>
+                <button id="muteBtn" class="bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm">
+                    <i data-lucide="volume-x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Main Content -->
+            <div class="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-4">
+                    <span id="heroSubtitle" class="inline-block px-6 py-3 bg-white bg-opacity-20 backdrop-blur-sm text-white rounded-full text-xl md:text-2xl font-bold mb-4 animate-fade-in-up">
+                        641 MW Total Capacity
+                    </span>
+                </div>
+
+                <h1 id="heroTitle" class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+                    Powering Jordan's Future
+                </h1>
+                
+                <p id="heroDescription" class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
+                    Reliable and efficient energy generation for a sustainable tomorrow
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
+                    <button id="heroBusinessBtn" class="bg-[#005670] hover:bg-[#004558] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg backdrop-blur-sm">
+                        <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+                <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="aboutSection" class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0 bg-pattern"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Stats Bar -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                    <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-[#005670] rounded-full mb-4">
+                            <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-[#231f20] mb-1">
+                            641<span class="text-[#005670]">MW</span>
+                        </div>
+                        <div class="text-sm text-gray-600 font-medium">
+                            <span class="nav-text" data-en="Total Capacity" data-ar="إجمالي القدرة">Total Capacity</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-[#005670] rounded-full mb-4">
+                            <i data-lucide="building" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-[#231f20] mb-1">8%</div>
+                        <div class="text-sm text-gray-600 font-medium">
+                            <span class="nav-text" data-en="Jordan's Electricity" data-ar="كهرباء الأردن">Jordan's Electricity</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-[#005670] rounded-full mb-4">
+                            <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-[#231f20] mb-1">2</div>
+                        <div class="text-sm text-gray-600 font-medium">
+                            <span class="nav-text" data-en="Power Plants" data-ar="محطات الطاقة">Power Plants</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-[#005670] rounded-full mb-4">
+                            <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-3xl font-bold text-[#231f20] mb-1">10+</div>
+                        <div class="text-sm text-gray-600 font-medium">
+                            <span class="nav-text" data-en="Years Operating" data-ar="سنوات التشغيل">Years Operating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Left Column -->
+                    <div>
+                        <div class="mb-6">
+                            <span class="inline-block px-4 py-2 bg-[#005670] bg-opacity-10 text-[#005670] rounded-full text-sm font-semibold mb-4">
+                                <span class="nav-text" data-en="WHO WE ARE" data-ar="من نحن">WHO WE ARE</span>
+                            </span>
+                            <h2 class="text-4xl lg:text-5xl font-bold text-[#231f20] mb-6 leading-tight">
+                                <span class="nav-text" data-en="About Nibras Jordan" data-ar="حول نبراس الأردن">About Nibras Jordan</span>
+                            </h2>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                <span class="nav-text" data-en="Nibras Jordan is a leading independent power producer, playing a pivotal role in supplying over 8% of Jordan's electricity." data-ar="نبراس الأردن هي منتج مستقل رائد للطاقة، تلعب دوراً محورياً في توفير أكثر من 8% من كهرباء الأردن.">
+                                    Nibras Jordan is a leading independent power producer, playing a pivotal role in supplying over 8% of Jordan's electricity.
+                                </span>
+                            </p>
+                            
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                <span class="nav-text" data-en="Our portfolio includes the Amman East Power Plant (400 MW) and Levant Power Plant (241 MW), delivering reliable baseload and peaking capacity." data-ar="تشمل محفظتنا محطة عمان الشرقية للطاقة (400 ميجاواط) ومحطة بلاد الشام للطاقة (241 ميجاواط)، مما يوفر قدرة أساسية وذروة موثوقة.">
+                                    Our portfolio includes the Amman East Power Plant (400 MW) and Levant Power Plant (241 MW), delivering reliable baseload and peaking capacity.
+                                </span>
+                            </p>
+
+                            <div class="flex items-start space-x-4 p-4 bg-[#005670] bg-opacity-5 rounded-lg">
+                                <div class="flex-shrink-0 w-2 h-2 bg-[#005670] rounded-full mt-3"></div>
+                                <p class="text-gray-700 italic">
+                                    <span class="nav-text" data-en='"We are committed to delivering reliable, efficient energy that supports Jordan\'s sustainable growth"' data-ar='"نحن ملتزمون بتوفير طاقة موثوقة وفعالة تدعم نمو الأردن المستدام"'>
+                                        "We are committed to delivering reliable, efficient energy that supports Jordan's sustainable growth"
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <button id="aboutLearnMoreBtn" class="inline-flex items-center mt-8 bg-[#005670] hover:bg-[#004558] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg group">
+                            <span class="nav-text" data-en="Learn More" data-ar="اعرف المزيد">Learn More</span>
+                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                        </button>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <div class="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-[#005670] bg-opacity-5 rounded-full -translate-y-16 translate-x-16"></div>
+                            
+                            <div class="relative">
+                                <span class="inline-block px-4 py-2 bg-[#005670] bg-opacity-10 text-[#005670] rounded-full text-sm font-semibold mb-4">
+                                    <span class="nav-text" data-en="OUR OPERATIONS" data-ar="عملياتنا">OUR OPERATIONS</span>
+                                </span>
+                                
+                                <h3 class="text-3xl font-bold text-[#231f20] mb-6">
+                                    <span class="nav-text" data-en="Our Operations" data-ar="عملياتنا">Our Operations</span>
+                                </h3>
+                                
+                                <div class="space-y-6">
+                                    <p class="text-lg text-gray-700 leading-relaxed">
+                                        <span class="nav-text" data-en="Together, these facilities contribute to energy security and economic growth. Our operations are supported by international partnerships and a commitment to high environmental standards." data-ar="معاً، تساهم هذه المرافق في أمن الطاقة والنمو الاقتصادي. عملياتنا مدعومة بشراكات دولية والتزام بمعايير بيئية عالية.">
+                                            Together, these facilities contribute to energy security and economic growth. Our operations are supported by international partnerships and a commitment to high environmental standards.
+                                        </span>
+                                    </p>
+
+                                    <div class="space-y-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-[#005670] rounded-full"></div>
+                                            <span class="text-gray-700">
+                                                <span class="nav-text" data-en="Strong international partnerships" data-ar="شراكات دولية قوية">Strong international partnerships</span>
+                                            </span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-[#005670] rounded-full"></div>
+                                            <span class="text-gray-700">
+                                                <span class="nav-text" data-en="High environmental standards" data-ar="معايير بيئية عالية">High environmental standards</span>
+                                            </span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-2 h-2 bg-[#005670] rounded-full"></div>
+                                            <span class="text-gray-700">
+                                                <span class="nav-text" data-en="Advanced technologies" data-ar="تقنيات متقدمة">Advanced technologies</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button id="operationsLearnMoreBtn" class="inline-flex items-center mt-6 text-[#005670] hover:text-[#004558] font-semibold text-lg transition-colors duration-200 group">
+                                    <span class="nav-text" data-en="Learn More" data-ar="اعرف المزيد">Learn More</span>
+                                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Section -->
+        <section id="businessSection" class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-[#005670] bg-opacity-5 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-[#005670] bg-opacity-5 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Header -->
+                <div class="text-center mb-20">
+                    <div class="inline-flex items-center px-6 py-3 bg-[#005670] bg-opacity-10 rounded-full mb-6">
+                        <i data-lucide="building-2" class="w-5 h-5 text-[#005670] mr-2"></i>
+                        <span class="text-[#005670] font-semibold text-sm tracking-wide uppercase">
+                            <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                        </span>
+                    </div>
+                    
+                    <h2 class="text-5xl lg:text-6xl font-bold text-[#231f20] mb-8 leading-tight">
+                        <span class="nav-text" data-en="Our Project Portfolio" data-ar="محفظة مشاريعنا">Our Project Portfolio</span>
+                    </h2>
+                    
+                    <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                        <span class="nav-text" data-en="Our investments drive the development of essential energy infrastructure, combining advanced technology with disciplined operations." data-ar="استثماراتنا تدفع تطوير البنية التحتية الأساسية للطاقة، مما يجمع بين التكنولوجيا المتقدمة والعمليات المنضبطة.">
+                            Our investments drive the development of essential energy infrastructure, combining advanced technology with disciplined operations.
+                        </span>
+                    </p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid lg:grid-cols-2 gap-8 mb-16" id="projectsGrid">
+                    <!-- Projects will be populated by JavaScript -->
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="text-center">
+                    <div class="bg-gradient-to-r from-[#005670] to-[#004558] rounded-2xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">
+                            <span class="nav-text" data-en="Discover More About Our Projects" data-ar="اكتشف المزيد عن مشاريعنا">Discover More About Our Projects</span>
+                        </h3>
+                        <p class="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
+                            <span class="nav-text" data-en="Learn how our projects contribute to energy security and economic growth in Jordan" data-ar="تعرف على كيفية مساهمة مشاريعنا في تعزيز أمن الطاقة والنمو الاقتصادي في الأردن">
+                                Learn how our projects contribute to energy security and economic growth in Jordan
+                            </span>
+                        </p>
+                        <button id="viewAllProjectsBtn" class="inline-flex items-center bg-white text-[#005670] hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <span class="nav-text" data-en="View All Projects" data-ar="عرض جميع المشاريع">View All Projects</span>
+                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="newsSection" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-[#231f20] mb-6">
+                        <span class="nav-text" data-en="Latest News & Media" data-ar="آخر الأخبار والإعلام">Latest News & Media</span>
+                    </h2>
+                    
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                        <span class="nav-text" data-en="Stay informed about milestones, operational achievements, and sustainability initiatives in Jordan" data-ar="ابق على اطلاع بالمعالم والإنجازات التشغيلية ومبادرات الاستدامة في الأردن">
+                            Stay informed about milestones, operational achievements, and sustainability initiatives in Jordan
+                        </span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="newsGrid">
+                    <!-- News items will be populated by JavaScript -->
+                </div>
+
+                <div class="text-center mt-12">
+                    <button id="viewAllNewsBtn" class="inline-flex items-center bg-[#005670] hover:bg-[#004558] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <span class="nav-text" data-en="View All News" data-ar="جميع الأخبار">View All News</span>
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-[#231f20] text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <img 
+                        src="/Logo-.png" 
+                        alt="Nebras Power" 
+                        class="h-20 w-auto mb-6 filter brightness-0 invert"
+                    />
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        <span class="nav-text" data-en="Nibras Power Jordan – Delivering reliable, efficient power generation to support Jordan's growth." data-ar="نبراس باور الأردن - توفير توليد طاقة موثوق وفعال لدعم نمو الأردن.">
+                            Nibras Power Jordan – Delivering reliable, efficient power generation to support Jordan's growth.
+                        </span>
+                    </p>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">
+                                <span class="nav-text" data-en="Amman, Jordan" data-ar="عمان، الأردن">Amman, Jordan</span>
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="phone" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">+974 4000 0000</span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="mail" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">info@nibraspower.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Company" data-ar="الشركة">Company</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="about">
+                            <span class="nav-text" data-en="About Us" data-ar="من نحن">About Us</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="about">
+                            <span class="nav-text" data-en="Leadership" data-ar="القيادة">Leadership</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="careers">
+                            <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
+                        </button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Services" data-ar="الخدمات">Services</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Asset Management" data-ar="إدارة الأصول">Asset Management</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Project Development" data-ar="تطوير المشاريع">Project Development</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Operations & Maintenance" data-ar="التشغيل والصيانة">Operations & Maintenance</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Consulting" data-ar="الاستشارات">Consulting</span>
+                        </button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Sustainability" data-ar="الاستدامة">Sustainability</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="sustainability-main">
+                            <span class="nav-text" data-en="Environmental Impact" data-ar="التأثير البيئي">Environmental Impact</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="sustainability-main">
+                            <span class="nav-text" data-en="Community Programs" data-ar="البرامج المجتمعية">Community Programs</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="sustainability-main">
+                            <span class="nav-text" data-en="Innovation" data-ar="الابتكار">Innovation</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="news">
+                            <span class="nav-text" data-en="Reports" data-ar="التقارير">Reports</span>
+                        </button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media & Language Toggle -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-6 mb-4 md:mb-0">
+                        <span class="text-gray-300 text-sm">
+                            <span class="nav-text" data-en="Follow us:" data-ar="تابعنا:">Follow us:</span>
+                        </span>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>
+                        © <span id="currentYear">2024</span> 
+                        <span class="nav-text" data-en="Nibras Power Jordan. All rights reserved." data-ar="نبراس باور الأردن. جميع الحقوق محفوظة.">
+                            Nibras Power Jordan. All rights reserved.
+                        </span>
+                    </p>
+                    
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-[#005670] transition-colors duration-200">
+                            <span class="nav-text" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</span>
+                        </a>
+                        <a href="#" class="hover:text-[#005670] transition-colors duration-200">
+                            <span class="nav-text" data-en="Terms & Conditions" data-ar="الشروط والأحكام">Terms & Conditions</span>
+                        </a>
+                        <a href="#" class="hover:text-[#005670] transition-colors duration-200">
+                            <span class="nav-text" data-en="Sitemap" data-ar="خريطة الموقع">Sitemap</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
 </html>

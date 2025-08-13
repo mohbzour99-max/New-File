@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Nibras Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <!-- Header content would be the same as index.html -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-24 bg-gradient-to-br from-[#005670] via-[#004558] to-[#003445] text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Breadcrumb -->
+                <div class="flex items-center text-white text-opacity-80 mb-8 text-sm">
+                    <button onclick="navigateToPage('home')" class="hover:text-white transition-colors duration-200 cursor-pointer">
+                        <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+                    </button>
+                    <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
+                    <span class="text-white">
+                        <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
+                    </span>
+                </div>
+
+                <div class="text-center">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+                        <span class="nav-text" data-en="We are committed to pioneering the energy of the future on a global scale" data-ar="نحن ملتزمون بريادة طاقة المستقبل على نطاق عالمي">
+                            We are committed to pioneering the energy of the future on a global scale
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Content -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl font-bold text-[#231f20] mb-8">
+                        <span class="nav-text" data-en="Energise your career" data-ar="انطلق بمسيرتك المهنية">Energise your career</span>
+                    </h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        <span class="nav-text" data-en="Our workforce of 170 people is committed to operational excellence and meeting the world's changing power needs. Our people share a common goal of providing affordable, sustainable energy to the community in which we operate." data-ar="قوتنا العاملة المكونة من 170 شخصاً ملتزمة بالتميز التشغيلي وتلبية احتياجات الطاقة المتغيرة في العالم. يتشارك موظفونا هدفاً مشتركاً في توفير طاقة مستدامة وبأسعار معقولة للمجتمع الذي نعمل فيه.">
+                            Our workforce of 170 people is committed to operational excellence and meeting the world's changing power needs. Our people share a common goal of providing affordable, sustainable energy to the community in which we operate.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Opportunities -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-[#231f20] mb-6">
+                        <span class="nav-text" data-en="Job Opportunities" data-ar="الفرص الوظيفية">Job Opportunities</span>
+                    </h2>
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                        <span class="nav-text" data-en="Discover available career opportunities and join our exceptional team" data-ar="اكتشف الفرص المهنية المتاحة وانضم إلى فريقنا المتميز">
+                            Discover available career opportunities and join our exceptional team
+                        </span>
+                    </p>
+                </div>
+
+                <!-- Job Listings -->
+                <div id="jobListings" class="space-y-6">
+                    <!-- Jobs will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#231f20] text-white">
+        <!-- Footer content would be the same as index.html -->
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/careers.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            populateJobListings();
+        });
+    </script>
+</body>
+</html>

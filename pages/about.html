@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nibras Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="min-h-screen bg-white">
+    <!-- Header (same as main page) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <!-- Header content would be the same as index.html -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-24 bg-gradient-to-br from-[#005670] via-[#004558] to-[#003445] text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <!-- Breadcrumb -->
+                <div class="flex items-center text-white text-opacity-80 mb-8 text-sm">
+                    <button onclick="navigateToPage('home')" class="hover:text-white transition-colors cursor-pointer flex items-center">
+                        <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+                    </button>
+                    <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
+                    <span class="text-white">
+                        <span class="nav-text" data-en="About Us" data-ar="من نحن">About Us</span>
+                    </span>
+                </div>
+
+                <div class="text-center">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        <span class="nav-text" data-en="About Us" data-ar="من نحن">About Us</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+                        <span class="nav-text" data-en="We are committed to pioneering the energy of the future on a global scale" data-ar="نحن ملتزمون بريادة طاقة المستقبل على نطاق عالمي">
+                            We are committed to pioneering the energy of the future on a global scale
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold text-[#231f20] mb-6">
+                            <span class="nav-text" data-en="AES Jordan Businesses Overview" data-ar="نظرة عامة على أعمال AES الأردن">AES Jordan Businesses Overview</span>
+                        </h2>
+                        <div class="text-lg text-gray-700 leading-relaxed">
+                            <p class="nav-text" data-en="AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country." data-ar="شركة AES الأردن هي محطة طاقة بقدرة 400 ميجاواط تعمل بالوقود المزدوج (الغاز الطبيعي والنفط) تقع شرق عمان. كانت المحطة أول منتج مستقل للطاقة (IPP) يبدأ عمليات توليد الطاقة لدعم التنمية الاقتصادية للبلاد.">
+                                AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <img
+                            src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                            alt="Power Plant"
+                            class="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as main page) -->
+    <footer class="bg-[#231f20] text-white">
+        <!-- Footer content would be the same as index.html -->
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Page-specific initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
