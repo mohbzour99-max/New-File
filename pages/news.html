@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Business - Nibras Jordan</title>
+    <title>News - Nibras Jordan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="stylesheet" href="../styles/main.css">
@@ -46,13 +46,13 @@
                             <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="sustainability-main">
                                 <span class="nav-text" data-en="SUSTAINABILITY" data-ar="الاستدامة">SUSTAINABILITY</span>
                             </button>
-                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200 active" data-page="business">
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="business">
                                 <span class="nav-text" data-en="OUR BUSINESS" data-ar="أعمالنا">OUR BUSINESS</span>
                             </button>
                             <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="careers">
                                 <span class="nav-text" data-en="CAREERS" data-ar="الوظائف">CAREERS</span>
                             </button>
-                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="news">
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200 active" data-page="news">
                                 <span class="nav-text" data-en="NEWS" data-ar="الأخبار">NEWS</span>
                             </button>
                             <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="contact">
@@ -95,133 +95,75 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <!-- Breadcrumb -->
                 <div class="flex items-center text-white text-opacity-80 mb-8 text-sm">
-                    <button onclick="navigateToPage('home')" class="hover:text-white transition-colors cursor-pointer flex items-center">
+                    <button onclick="navigateToPage('home')" class="hover:text-white transition-colors duration-200 cursor-pointer">
                         <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
                     </button>
                     <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
                     <span class="text-white">
-                        <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                        <span class="nav-text" data-en="News" data-ar="الأخبار">News</span>
                     </span>
                 </div>
 
                 <div class="text-center">
                     <h1 class="text-5xl lg:text-6xl font-bold mb-6">
-                        <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                        <span class="nav-text" data-en="News" data-ar="الأخبار">News</span>
                     </h1>
                     <p class="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
-                        <span class="nav-text" data-en="We are committed to pioneering the energy of the future on a global scale" data-ar="نحن ملتزمون بريادة طاقة المستقبل على نطاق عالمي">
-                            We are committed to pioneering the energy of the future on a global scale
+                        <span class="nav-text" data-en="Stay informed about our latest developments and achievements" data-ar="ابق على اطلاع بآخر التطورات والإنجازات">
+                            Stay informed about our latest developments and achievements
                         </span>
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- AES Corporation Overview -->
-        <section class="py-20 bg-white">
+        <!-- Featured Article -->
+        <section class="py-12 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <!-- Left Column - Image -->
-                    <div class="relative">
-                        <img
-                            src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                            alt="AES Corporation"
-                            class="w-full h-96 object-cover rounded-2xl shadow-xl"
-                        />
-                    </div>
-                    
-                    <!-- Right Column - Content -->
-                    <div>
-                        <div class="inline-flex items-center px-6 py-3 bg-[#005670] bg-opacity-10 rounded-full mb-6">
-                            <i data-lucide="building-2" class="w-5 h-5 text-[#005670] mr-2"></i>
-                            <span class="text-[#005670] font-semibold text-sm tracking-wide uppercase">
-                                <span class="nav-text" data-en="AES Corporation" data-ar="شركة AES">AES Corporation</span>
-                            </span>
-                        </div>
-                        
-                        <h2 class="text-4xl font-bold text-[#231f20] mb-8 leading-tight">
-                            <span class="nav-text" data-en="AES in Jordan" data-ar="AES في الأردن">AES in Jordan</span>
-                        </h2>
-                        
-                        <div class="space-y-6">
-                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                                <span class="nav-text" data-en="AES Jordan is part of AES Corporation, a Fortune 200 global energy company operating in 17 countries. With a team of 21,000 people, AES delivers reliable, affordable, and sustainable energy through a diverse mix of technologies and fuels, including renewables." data-ar="AES الأردن جزء من شركة AES، وهي شركة طاقة عالمية من فورتشن 200 تعمل في 17 دولة. مع فريق من 21,000 شخص، تقدم AES طاقة موثوقة وبأسعار معقولة ومستدامة من خلال مزيج متنوع من التقنيات والوقود، بما في ذلك الطاقة المتجددة.">
-                                    AES Jordan is part of AES Corporation, a Fortune 200 global energy company operating in 17 countries. With a team of 21,000 people, AES delivers reliable, affordable, and sustainable energy through a diverse mix of technologies and fuels, including renewables.
-                                </span>
-                            </p>
-                        </div>
-                    </div>
+                <div id="featuredArticle">
+                    <!-- Featured article will be populated by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Project Portfolio -->
-        <section class="py-20 bg-gray-50">
+        <!-- News Grid -->
+        <section class="py-12 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-[#231f20] mb-6">
-                        <span class="nav-text" data-en="Project Portfolio" data-ar="محفظة المشاريع">Project Portfolio</span>
-                    </h2>
-                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-                        <span class="nav-text" data-en="Strategic investments in energy infrastructure" data-ar="استثمارات استراتيجية في البنية التحتية للطاقة">
-                            Strategic investments in energy infrastructure
-                        </span>
-                    </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="newsGrid">
+                    <!-- News articles will be populated by JavaScript -->
                 </div>
 
-                <div class="space-y-16" id="projectDetails">
-                    <!-- Projects will be populated by JavaScript -->
+                <!-- Pagination -->
+                <div class="mt-16 flex justify-center items-center space-x-4" id="pagination">
+                    <!-- Pagination will be populated by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Performance Metrics -->
+        <!-- Newsletter Signup -->
         <section class="py-20 bg-[#005670] text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center">
                     <h2 class="text-4xl font-bold mb-6">
-                        <span class="nav-text" data-en="Performance Metrics" data-ar="مؤشرات الأداء">Performance Metrics</span>
+                        <span class="nav-text" data-en="Subscribe to Our Newsletter" data-ar="اشترك في نشرتنا الإخبارية">Subscribe to Our Newsletter</span>
                     </h2>
-                    <p class="text-xl max-w-3xl mx-auto opacity-90">
-                        <span class="nav-text" data-en="Numbers that reflect our commitment to excellence and reliability" data-ar="أرقام تعكس التزامنا بالتميز والموثوقية">
-                            Numbers that reflect our commitment to excellence and reliability
+                    <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                        <span class="nav-text" data-en="Get the latest news and updates from Nibras Jordan delivered directly to your inbox" data-ar="احصل على آخر الأخبار والتحديثات من نبراس الأردن مباشرة في بريدك الإلكتروني">
+                            Get the latest news and updates from Nibras Jordan delivered directly to your inbox
                         </span>
                     </p>
-                </div>
-
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div class="text-5xl font-bold mb-2">641</div>
-                        <div class="text-xl opacity-90">MW</div>
-                        <div class="text-sm opacity-75 mt-2">
-                            <span class="nav-text" data-en="Total Capacity" data-ar="إجمالي القدرة">Total Capacity</span>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-5xl font-bold mb-2">8%+</div>
-                        <div class="text-xl opacity-90">
-                            <span class="nav-text" data-en="of Jordan's Electricity" data-ar="من كهرباء الأردن">of Jordan's Electricity</span>
-                        </div>
-                        <div class="text-sm opacity-75 mt-2">
-                            <span class="nav-text" data-en="Market Share" data-ar="حصة السوق">Market Share</span>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-5xl font-bold mb-2">99.8%</div>
-                        <div class="text-xl opacity-90">
-                            <span class="nav-text" data-en="Reliability" data-ar="موثوقية">Reliability</span>
-                        </div>
-                        <div class="text-sm opacity-75 mt-2">
-                            <span class="nav-text" data-en="Availability Rate" data-ar="معدل التشغيل">Availability Rate</span>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-5xl font-bold mb-2">$660M</div>
-                        <div class="text-xl opacity-90">
-                            <span class="nav-text" data-en="Investment" data-ar="استثمار">Investment</span>
-                        </div>
-                        <div class="text-sm opacity-75 mt-2">
-                            <span class="nav-text" data-en="Total Investment" data-ar="إجمالي الاستثمار">Total Investment</span>
+                    
+                    <div class="max-w-md mx-auto">
+                        <div class="flex">
+                            <input
+                                type="email"
+                                id="newsletterEmail"
+                                placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                            />
+                            <button id="subscribeBtn" class="bg-white text-[#005670] px-6 py-3 rounded-r-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                                <span class="nav-text" data-en="Subscribe" data-ar="اشترك">Subscribe</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -260,9 +202,6 @@
                         <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
                             <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
                         </button></li>
-                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="careers">
-                            <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
-                        </button></li>
                     </ul>
                 </div>
 
@@ -274,9 +213,6 @@
                         <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
                             <span class="nav-text" data-en="Asset Management" data-ar="إدارة الأصول">Asset Management</span>
                         </button></li>
-                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
-                            <span class="nav-text" data-en="Project Development" data-ar="تطوير المشاريع">Project Development</span>
-                        </button></li>
                     </ul>
                 </div>
 
@@ -287,9 +223,6 @@
                     <ul class="space-y-3">
                         <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="sustainability-main">
                             <span class="nav-text" data-en="Environmental Impact" data-ar="التأثير البيئي">Environmental Impact</span>
-                        </button></li>
-                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="news">
-                            <span class="nav-text" data-en="Reports" data-ar="التقارير">Reports</span>
                         </button></li>
                     </ul>
                 </div>
@@ -310,13 +243,13 @@
     </footer>
 
     <script src="../js/main.js"></script>
-    <script src="../js/business.js"></script>
+    <script src="../js/news.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            populateBusinessProjects();
+            populateNewsContent();
         });
     </script>
 </body>

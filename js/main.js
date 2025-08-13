@@ -1,6 +1,7 @@
 // Global state
 let isArabic = false;
 let currentPage = 'home';
+let currentPagePath = window.location.pathname;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -28,6 +29,12 @@ function initializeApp() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+    
+    // Load language preference
+    loadLanguagePreference();
+    
+    // Set current page based on URL
+    setCurrentPageFromURL();
 }
 
 function setupEventListeners() {
@@ -385,28 +392,81 @@ function updateLanguage() {
 }
 
 function navigateToPage(page) {
-    // Simple page navigation - in a real app, you might use a router
-    console.log(`Navigating to: ${page}`);
+    if (page === 'home') {
+        window.location.href = '../index.html';
+        return;
+    }
     
-    // Update current page
-    currentPage = page;
+    const pageUrls = {
+        'about': '../pages/about.html',
+        'business': '../pages/business.html',
+        'careers': '../pages/careers.html',
+        'contact': '../pages/contact.html',
+        'news': '../pages/news.html',
+        'sustainability-main': '../pages/sustainability.html',
+        'search': '../pages/search.html'
+    };
     
-    // Update active navigation state
-    updateActiveNavigation(page);
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-    
-    // Close mobile menu if open
-    closeMobileMenu();
-    
-    // For demo purposes, we'll just show an alert
-    // In a real implementation, you would load the appropriate page content
-    if (page !== 'home') {
-        alert(`Navigation to ${page} page would happen here. In a full implementation, this would load the appropriate HTML content.`);
+    const url = pageUrls[page];
+    if (url) {
+        window.location.href = url;
+    } else {
+        console.warn(`Page "${page}" not found`);
     }
 }
 
+function setCurrentPageFromURL() {
+    const path = window.location.pathname;
+    
+    if (path.includes('about.html')) {
+        currentPage = 'about';
+    } else if (path.includes('business.html')) {
+        currentPage = 'business';
+    } else if (path.includes('careers.html')) {
+        currentPage = 'careers';
+    } else if (path.includes('contact.html')) {
+        currentPage = 'contact';
+    } else if (path.includes('news.html')) {
+        currentPage = 'news';
+    } else if (path.includes('sustainability.html')) {
+        currentPage = 'sustainability-main';
+    } else if (path.includes('search.html')) {
+        currentPage = 'search';
+    } else {
+        currentPage = 'home';
+    }
+    
+    updateActiveNavigation(currentPage);
+}
+
+function loadLanguagePreference() {
+    const savedLanguage = localStorage.getItem('nibras_language');
+    if (savedLanguage === 'ar') {
+        isArabic = true;
+        updateLanguage();
+    }
+}
+
+function saveLanguagePreference() {
+    localStorage.setItem('nibras_language', isArabic ? 'ar' : 'en');
+}
+
+function toggleLanguage() {
+    isArabic = !isArabic;
+    updateLanguage();
+    saveLanguagePreference();
+}
+
+function updateLanguage() {
+    const body = document.body;
+    const html = document.documentElement;
+    const languageText = document.getElementById('languageText');
+    
+    // Update body direction and language
+    if (isArabic) {
+        body.classList.add('rtl');
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
 function updateActiveNavigation(page) {
     // Remove active class from all nav items
     const navItems = document.querySelectorAll('.nav-item');

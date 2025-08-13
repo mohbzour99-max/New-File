@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Nibras Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <!-- Breadcrumb -->
+            <div class="flex items-center text-gray-600 mb-4 text-sm">
+                <button onclick="navigateToPage('home')" class="hover:text-[#005670] transition-colors duration-200 cursor-pointer">
+                    <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+                </button>
+                <i data-lucide="chevron-right" class="w-4 h-4 mx-2"></i>
+                <span class="text-gray-800">
+                    <span class="nav-text" data-en="Search" data-ar="البحث">Search</span>
+                </span>
+            </div>
+
+            <div class="flex items-center justify-between mb-6">
+                <h1 class="text-2xl font-bold text-[#231f20]">
+                    <span class="nav-text" data-en="Search" data-ar="البحث">Search</span>
+                </h1>
+                <button onclick="navigateToPage('home')" class="p-2 text-gray-600 hover:text-[#005670] transition-colors duration-200">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative mb-4">
+                <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search the website..."
+                    class="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#005670] focus:border-transparent text-lg"
+                    autofocus
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="searchResults">
+            <!-- Search results will be populated by JavaScript -->
+        </div>
+
+        <div id="noResults" class="text-center py-12 hidden">
+            <i data-lucide="search" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">
+                <span class="nav-text" data-en="Start searching" data-ar="ابدأ البحث">Start searching</span>
+            </h3>
+            <p class="text-gray-500">
+                <span class="nav-text" data-en="Enter a word or phrase to search the website" data-ar="أدخل كلمة أو عبارة للبحث في الموقع">
+                    Enter a word or phrase to search the website
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            setupSearch();
+        });
+    </script>
+</body>
+</html>

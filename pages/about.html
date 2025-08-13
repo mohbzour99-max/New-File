@@ -9,9 +9,83 @@
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body class="min-h-screen bg-white">
-    <!-- Header (same as main page) -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
-        <!-- Header content would be the same as index.html -->
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20">
+                <!-- Logo Section -->
+                <div class="flex items-center">
+                    <img
+                        id="logo"
+                        src="../public/Logo-.png" 
+                        alt="Nebras Power" 
+                        class="h-16 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                    />
+                </div>
+
+                <!-- Content Section -->
+                <div class="flex-1 flex flex-col ml-8">
+                    <!-- Top Row -->
+                    <div class="flex items-center justify-end h-10 border-b border-gray-200">
+                        <button
+                            id="languageToggle"
+                            class="bg-[#005670] hover:bg-[#004558] text-white px-4 py-1.5 rounded text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
+                        >
+                            <i data-lucide="globe" class="w-4 h-4"></i>
+                            <span id="languageText">العربية</span>
+                        </button>
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="flex-1 flex items-center justify-between">
+                        <!-- Desktop Navigation -->
+                        <nav id="desktopNav" class="hidden lg:flex items-center space-x-8">
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="about">
+                                <span class="nav-text" data-en="ABOUT US" data-ar="من نحن">ABOUT US</span>
+                            </button>
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="sustainability-main">
+                                <span class="nav-text" data-en="SUSTAINABILITY" data-ar="الاستدامة">SUSTAINABILITY</span>
+                            </button>
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="business">
+                                <span class="nav-text" data-en="OUR BUSINESS" data-ar="أعمالنا">OUR BUSINESS</span>
+                            </button>
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="careers">
+                                <span class="nav-text" data-en="CAREERS" data-ar="الوظائف">CAREERS</span>
+                            </button>
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="news">
+                                <span class="nav-text" data-en="NEWS" data-ar="الأخبار">NEWS</span>
+                            </button>
+                            <button class="nav-item text-gray-800 hover:text-[#005670] font-medium text-sm uppercase tracking-wide transition-colors duration-200" data-page="contact">
+                                <span class="nav-text" data-en="CONTACT US" data-ar="اتصل بنا">CONTACT US</span>
+                            </button>
+                        </nav>
+
+                        <!-- Search -->
+                        <div class="hidden lg:flex items-center">
+                            <button id="searchBtn" class="flex items-center space-x-2 text-gray-600 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium nav-text" data-en="Search" data-ar="بحث">Search</span>
+                            </button>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="lg:hidden ml-auto">
+                            <button id="mobileMenuBtn" class="p-2 text-gray-600 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="menu" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden transition-all duration-300 invisible opacity-0">
+            <div class="absolute inset-0 bg-black opacity-50" id="mobileMenuBackdrop"></div>
+            <div id="mobileMenuPanel" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-out translate-x-full">
+                <!-- Menu content will be populated by JavaScript -->
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -43,7 +117,7 @@
             </div>
         </section>
 
-        <!-- About Content -->
+        <!-- AES Jordan Businesses Overview -->
         <section class="py-20 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -52,8 +126,20 @@
                             <span class="nav-text" data-en="AES Jordan Businesses Overview" data-ar="نظرة عامة على أعمال AES الأردن">AES Jordan Businesses Overview</span>
                         </h2>
                         <div class="text-lg text-gray-700 leading-relaxed">
-                            <p class="nav-text" data-en="AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country." data-ar="شركة AES الأردن هي محطة طاقة بقدرة 400 ميجاواط تعمل بالوقود المزدوج (الغاز الطبيعي والنفط) تقع شرق عمان. كانت المحطة أول منتج مستقل للطاقة (IPP) يبدأ عمليات توليد الطاقة لدعم التنمية الاقتصادية للبلاد.">
-                                AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country.
+                            <p class="mb-6">
+                                <span class="nav-text" data-en="AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country." data-ar="شركة AES الأردن هي محطة طاقة بقدرة 400 ميجاواط تعمل بالوقود المزدوج (الغاز الطبيعي والنفط) تقع شرق عمان. كانت المحطة أول منتج مستقل للطاقة (IPP) يبدأ عمليات توليد الطاقة لدعم التنمية الاقتصادية للبلاد.">
+                                    AES Jordan PSC is a 400 megawatt (MW) dual fuel natural gas- and oil-fired power plant located east of Amman. The plant was the first Independent Power Producer (IPP) to start power generation operations in order to support the economic development of the country.
+                                </span>
+                            </p>
+                            <p class="mb-6">
+                                <span class="nav-text" data-en="AES Jordan generates approximately 8% of Jordan's electricity and is one of the most reliable power plants in the country. AES' portfolio in Jordan also includes a 241 MW Tri Fuel power plant, which entered in to commercial operation in July 2014." data-ar="تولد AES الأردن حوالي 8% من كهرباء الأردن وهي واحدة من أكثر محطات الطاقة موثوقية في البلاد. تشمل محفظة AES في الأردن أيضاً محطة طاقة ثلاثية الوقود بقدرة 241 ميجاواط، والتي دخلت في التشغيل التجاري في يوليو 2014.">
+                                    AES Jordan generates approximately 8% of Jordan's electricity and is one of the most reliable power plants in the country. AES' portfolio in Jordan also includes a 241 MW Tri Fuel power plant, which entered in to commercial operation in July 2014.
+                                </span>
+                            </p>
+                            <p>
+                                <span class="nav-text" data-en="Together these projects provide 641 MW, contributing to the stabilization of the energy sector and enhancing the energy independence of the country." data-ar="معاً توفر هذه المشاريع 641 ميجاواط، مما يساهم في استقرار قطاع الطاقة وتعزيز استقلالية الطاقة في البلاد.">
+                                    Together these projects provide 641 MW, contributing to the stabilization of the energy sector and enhancing the energy independence of the country.
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -68,18 +154,315 @@
                 </div>
             </div>
         </section>
+
+        <!-- Timeline -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-[#231f20] mb-6">
+                        <span class="nav-text" data-en="Our Journey Through Time" data-ar="رحلتنا عبر الزمن">Our Journey Through Time</span>
+                    </h2>
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                        <span class="nav-text" data-en="Key milestones in Jordan's energy sector development" data-ar="معالم مهمة في تطوير قطاع الطاقة في الأردن">
+                            Key milestones in Jordan's energy sector development
+                        </span>
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#005670] opacity-20"></div>
+                    
+                    <div class="space-y-16">
+                        <div class="relative flex items-center justify-start">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#005670] rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                    <div class="text-3xl font-bold text-[#005670] mb-2">2007</div>
+                                    <h3 class="text-xl font-bold text-[#231f20] mb-3">
+                                        <span class="nav-text" data-en="Company Establishment" data-ar="تأسيس الشركة">Company Establishment</span>
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        <span class="nav-text" data-en="Nibras Jordan was established as Jordan's first Independent Power Producer" data-ar="تأسست نبراس الأردن كأول منتج مستقل للطاقة في الأردن">
+                                            Nibras Jordan was established as Jordan's first Independent Power Producer
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-end">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#005670] rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="w-5/12 text-left pl-8">
+                                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                    <div class="text-3xl font-bold text-[#005670] mb-2">2009</div>
+                                    <h3 class="text-xl font-bold text-[#231f20] mb-3">
+                                        <span class="nav-text" data-en="Amman East Power Plant" data-ar="محطة عمان الشرقية للطاقة">Amman East Power Plant</span>
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        <span class="nav-text" data-en="400 MW combined cycle power plant commissioned" data-ar="تشغيل محطة طاقة دورة مركبة بقدرة 400 ميجاواط">
+                                            400 MW combined cycle power plant commissioned
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-start">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#005670] rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                    <div class="text-3xl font-bold text-[#005670] mb-2">2015</div>
+                                    <h3 class="text-xl font-bold text-[#231f20] mb-3">
+                                        <span class="nav-text" data-en="Levant Power Plant" data-ar="محطة بلاد الشام للطاقة">Levant Power Plant</span>
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        <span class="nav-text" data-en="241 MW tri-fuel peaking plant operational" data-ar="تشغيل محطة ذروة ثلاثية الوقود بقدرة 241 ميجاواط">
+                                            241 MW tri-fuel peaking plant operational
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-center justify-end">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#005670] rounded-full border-4 border-white shadow-lg z-10"></div>
+                            <div class="w-5/12 text-left pl-8">
+                                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                    <div class="text-3xl font-bold text-[#005670] mb-2">2024</div>
+                                    <h3 class="text-xl font-bold text-[#231f20] mb-3">
+                                        <span class="nav-text" data-en="Continued Excellence" data-ar="التميز المستمر">Continued Excellence</span>
+                                    </h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        <span class="nav-text" data-en="Over 8% of Jordan's electricity supply with 99.8% reliability" data-ar="أكثر من 8% من إمدادات الكهرباء في الأردن بموثوقية 99.8%">
+                                            Over 8% of Jordan's electricity supply with 99.8% reliability
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-[#231f20] mb-6">
+                        <span class="nav-text" data-en="Our Values" data-ar="قيمنا">Our Values</span>
+                    </h2>
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                        <span class="nav-text" data-en="The principles that guide our work and shape our corporate culture" data-ar="المبادئ التي توجه عملنا وتشكل ثقافتنا المؤسسية">
+                            The principles that guide our work and shape our corporate culture
+                        </span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center group">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#005670] rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="target" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#231f20] mb-4">
+                            <span class="nav-text" data-en="Excellence" data-ar="التميز">Excellence</span>
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <span class="nav-text" data-en="Committed to operational excellence and continuous improvement" data-ar="ملتزمون بالتميز التشغيلي والتحسين المستمر">
+                                Committed to operational excellence and continuous improvement
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="text-center group">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#005670] rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#231f20] mb-4">
+                            <span class="nav-text" data-en="Integrity" data-ar="النزاهة">Integrity</span>
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <span class="nav-text" data-en="Conducting business with transparency and ethical standards" data-ar="ممارسة الأعمال بشفافية ومعايير أخلاقية">
+                                Conducting business with transparency and ethical standards
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="text-center group">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#005670] rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#231f20] mb-4">
+                            <span class="nav-text" data-en="Sustainability" data-ar="الاستدامة">Sustainability</span>
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <span class="nav-text" data-en="Environmental stewardship and sustainable development" data-ar="الإشراف البيئي والتنمية المستدامة">
+                                Environmental stewardship and sustainable development
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="text-center group">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#005670] rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="award" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#231f20] mb-4">
+                            <span class="nav-text" data-en="Innovation" data-ar="الابتكار">Innovation</span>
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <span class="nav-text" data-en="Embracing technology and innovative solutions" data-ar="احتضان التكنولوجيا والحلول المبتكرة">
+                                Embracing technology and innovative solutions
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Links -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="navigateToPage('business')" class="inline-flex items-center bg-[#005670] hover:bg-[#004558] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                            <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                        <button onclick="navigateToPage('careers')" class="inline-flex items-center border-2 border-[#005670] text-[#005670] hover:bg-[#005670] hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                            <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer (same as main page) -->
+    <!-- Footer -->
     <footer class="bg-[#231f20] text-white">
-        <!-- Footer content would be the same as index.html -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <img 
+                        src="../public/Logo-.png" 
+                        alt="Nebras Power" 
+                        class="h-20 w-auto mb-6 filter brightness-0 invert"
+                    />
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        <span class="nav-text" data-en="Nibras Power Jordan – Delivering reliable, efficient power generation to support Jordan's growth." data-ar="نبراس باور الأردن - توفير توليد طاقة موثوق وفعال لدعم نمو الأردن.">
+                            Nibras Power Jordan – Delivering reliable, efficient power generation to support Jordan's growth.
+                        </span>
+                    </p>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">
+                                <span class="nav-text" data-en="Amman, Jordan" data-ar="عمان، الأردن">Amman, Jordan</span>
+                            </span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="phone" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">+974 4000 0000</span>
+                        </div>
+                        
+                        <div class="flex items-center text-gray-300">
+                            <i data-lucide="mail" class="w-5 h-5 mr-3 text-[#005670]"></i>
+                            <span class="text-sm">info@nibraspower.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Company" data-ar="الشركة">Company</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="about">
+                            <span class="nav-text" data-en="About Us" data-ar="من نحن">About Us</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Our Business" data-ar="أعمالنا">Our Business</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="careers">
+                            <span class="nav-text" data-en="Careers" data-ar="الوظائف">Careers</span>
+                        </button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Services" data-ar="الخدمات">Services</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Asset Management" data-ar="إدارة الأصول">Asset Management</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="business">
+                            <span class="nav-text" data-en="Project Development" data-ar="تطوير المشاريع">Project Development</span>
+                        </button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">
+                        <span class="nav-text" data-en="Sustainability" data-ar="الاستدامة">Sustainability</span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="sustainability-main">
+                            <span class="nav-text" data-en="Environmental Impact" data-ar="التأثير البيئي">Environmental Impact</span>
+                        </button></li>
+                        <li><button class="footer-link text-gray-300 hover:text-[#005670] transition-colors duration-200 text-sm" data-page="news">
+                            <span class="nav-text" data-en="Reports" data-ar="التقارير">Reports</span>
+                        </button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media & Copyright -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-6 mb-4 md:mb-0">
+                        <span class="text-gray-300 text-sm">
+                            <span class="nav-text" data-en="Follow us:" data-ar="تابعنا:">Follow us:</span>
+                        </span>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="text-gray-300 hover:text-[#005670] transition-colors duration-200">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>
+                        © <span id="currentYear">2024</span> 
+                        <span class="nav-text" data-en="Nibras Power Jordan. All rights reserved." data-ar="نبراس باور الأردن. جميع الحقوق محفوظة.">
+                            Nibras Power Jordan. All rights reserved.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="../js/main.js"></script>
     <script>
-        // Page-specific initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize page
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
