@@ -1,7 +1,7 @@
 // Utility functions for the application
 
 // Language management
-class LanguageManager {
+export class LanguageManager {
     constructor() {
         this.isArabic = false;
         this.translations = {};
@@ -75,7 +75,7 @@ class LanguageManager {
 }
 
 // Animation utilities
-class AnimationManager {
+export class AnimationManager {
     constructor() {
         this.observers = new Map();
         this.setupIntersectionObserver();
@@ -152,7 +152,7 @@ class AnimationManager {
 }
 
 // Performance utilities
-class PerformanceManager {
+export class PerformanceManager {
     constructor() {
         this.lazyImages = [];
         this.setupLazyLoading();
@@ -216,7 +216,7 @@ class PerformanceManager {
 }
 
 // Form utilities
-class FormManager {
+export class FormManager {
     constructor() {
         this.validators = {
             email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -231,11 +231,11 @@ class FormManager {
 
         rules.forEach(rule => {
             if (rule === 'required' && !this.validators.required(value)) {
-                errors.push(isArabic ? 'هذا الحقل مطلوب' : 'This field is required');
+                errors.push('This field is required');
             } else if (rule === 'email' && value && !this.validators.email.test(value)) {
-                errors.push(isArabic ? 'يرجى إدخال بريد إلكتروني صحيح' : 'Please enter a valid email address');
+                errors.push('Please enter a valid email address');
             } else if (rule === 'phone' && value && !this.validators.phone.test(value)) {
-                errors.push(isArabic ? 'يرجى إدخال رقم هاتف صحيح' : 'Please enter a valid phone number');
+                errors.push('Please enter a valid phone number');
             }
         });
 
@@ -280,7 +280,7 @@ class FormManager {
 }
 
 // Storage utilities
-class StorageManager {
+export class StorageManager {
     constructor() {
         this.prefix = 'nibras_';
     }
@@ -324,31 +324,28 @@ class StorageManager {
     }
 }
 
-// Initialize utility classes
-const languageManager = new LanguageManager();
-const animationManager = new AnimationManager();
-const performanceManager = new PerformanceManager();
-const formManager = new FormManager();
-const storageManager = new StorageManager();
+// Utility functions
+export function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-// Export for global access
-window.languageManager = languageManager;
-window.animationManager = animationManager;
-window.performanceManager = performanceManager;
-window.formManager = formManager;
-window.storageManager = storageManager;
-
-// Common utility functions
-window.utils = {
-    formatDate: (dateString) => languageManager.formatDate(dateString),
-    debounce: (func, wait) => performanceManager.debounce(func, wait),
-    throttle: (func, limit) => performanceManager.throttle(func, limit),
-    scrollTo: (selector, offset) => animationManager.scrollToElement(selector, offset),
-    validateForm: (form, rules) => formManager.validateForm(form, rules),
-    storage: {
-        set: (key, value) => storageManager.set(key, value),
-        get: (key, defaultValue) => storageManager.get(key, defaultValue),
-        remove: (key) => storageManager.remove(key),
-        clear: () => storageManager.clear()
+export function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
     }
-};
+}

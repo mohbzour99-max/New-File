@@ -1,7 +1,19 @@
+// Main application file
+import { LanguageManager, AnimationManager, PerformanceManager, FormManager, StorageManager, debounce, throttle } from './utils.js';
+import { Router, navigateToPage } from './navigation.js';
+
 // Global state
 let isArabic = false;
 let currentPage = 'home';
 let currentPagePath = window.location.pathname;
+
+// Initialize utility classes
+const languageManager = new LanguageManager();
+const animationManager = new AnimationManager();
+const performanceManager = new PerformanceManager();
+const formManager = new FormManager();
+const storageManager = new StorageManager();
+const router = new Router();
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeApp() {
     // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
     
     // Initialize event listeners
     setupEventListeners();
@@ -112,7 +127,6 @@ function setupMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
-    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
@@ -355,64 +369,10 @@ function setupVideoControls() {
 
 function toggleLanguage() {
     isArabic = !isArabic;
-    updateLanguage();
-}
-
-function updateLanguage() {
-    const body = document.body;
-    const languageText = document.getElementById('languageText');
-    
-    // Update body direction
-    if (isArabic) {
-        body.classList.add('rtl');
-        body.setAttribute('dir', 'rtl');
-        if (languageText) languageText.textContent = 'English';
-    } else {
-        body.classList.remove('rtl');
-        body.setAttribute('dir', 'ltr');
-        if (languageText) languageText.textContent = 'العربية';
-    }
-
-    // Update all text elements
-    const textElements = document.querySelectorAll('.nav-text');
-    textElements.forEach(element => {
-        const enText = element.getAttribute('data-en');
-        const arText = element.getAttribute('data-ar');
-        
-        if (enText && arText) {
-            element.textContent = isArabic ? arText : enText;
-        }
-    });
-
-    // Update mobile language toggle
-    const mobileLanguageToggle = document.querySelector('#mobileLanguageToggle .nav-text');
-    if (mobileLanguageToggle) {
-        mobileLanguageToggle.textContent = isArabic ? 'English' : 'العربية';
-    }
-}
-
-function navigateToPage(page) {
-    if (page === 'home') {
-        window.location.href = '../index.html';
-        return;
-    }
-    
-    const pageUrls = {
-        'about': '../pages/about.html',
-        'business': '../pages/business.html',
-        'careers': '../pages/careers.html',
-        'contact': '../pages/contact.html',
-        'news': '../pages/news.html',
-        'sustainability-main': '../pages/sustainability.html',
-        'search': '../pages/search.html'
-    };
-    
-    const url = pageUrls[page];
-    if (url) {
-        window.location.href = url;
-    } else {
-        console.warn(`Page "${page}" not found`);
-    }
+    languageManager.isArabic = isArabic;
+    languageManager.updateDOM();
+    languageManager.updateDirection();
+    languageManager.savePreference();
 }
 
 function setCurrentPageFromURL() {
@@ -440,35 +400,10 @@ function setCurrentPageFromURL() {
 }
 
 function loadLanguagePreference() {
-    const savedLanguage = localStorage.getItem('nibras_language');
-    if (savedLanguage === 'ar') {
-        isArabic = true;
-        updateLanguage();
-    }
+    languageManager.loadPreference();
+    isArabic = languageManager.isArabic;
 }
 
-function saveLanguagePreference() {
-    localStorage.setItem('nibras_language', isArabic ? 'ar' : 'en');
-}
-
-function toggleLanguage() {
-    isArabic = !isArabic;
-    updateLanguage();
-    saveLanguagePreference();
-}
-
-function updateLanguage() {
-    const body = document.body;
-    const html = document.documentElement;
-    const languageText = document.getElementById('languageText');
-    
-    // Update body direction and language
-    if (isArabic) {
-        body.classList.add('rtl');
-        html.setAttribute('dir', 'rtl');
-        html.setAttribute('lang', 'ar');
-    }
-}
 function updateActiveNavigation(page) {
     // Remove active class from all nav items
     const navItems = document.querySelectorAll('.nav-item');
@@ -557,7 +492,7 @@ function populateProjects() {
 
             <!-- Content Section -->
             <div class="p-8">
-                <h3 class="text-2xl font-bold text-[#231f20] mb-4 group-hover:text-[#005670] transition-colors duration-300">
+                <h3 class="text-2xl font-bold text-[#231f20] group-hover:text-[#005670] mb-4 transition-colors duration-300">
                     <span class="nav-text" data-en="${project.title.en}" data-ar="${project.title.ar}">${project.title.en}</span>
                 </h3>
                 
@@ -594,8 +529,7 @@ function populateProjects() {
     projectButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const projectId = e.currentTarget.getAttribute('data-project-id');
-            const page = projectId === '1' ? 'business-aes-jordan-ipp1' : 'business-aes-levant-ipp4';
-            navigateToPage(page);
+            navigateToPage('business');
         });
     });
 
@@ -741,32 +675,6 @@ function setupIntersectionObservers() {
     animatedElements.forEach(el => observer.observe(el));
 }
 
-// Utility functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-}
-
 // Handle scroll events
 window.addEventListener('scroll', throttle(() => {
     const header = document.getElementById('header');
@@ -804,3 +712,4 @@ document.addEventListener('visibilitychange', () => {
 // Export functions for global access
 window.navigateToPage = navigateToPage;
 window.toggleLanguage = toggleLanguage;
+window.isArabic = () => isArabic;

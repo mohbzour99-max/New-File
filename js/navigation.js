@@ -1,6 +1,6 @@
 // Navigation and routing functionality
 
-class Router {
+export class Router {
     constructor() {
         this.routes = {
             'home': '/',
@@ -64,14 +64,8 @@ class Router {
     }
 }
 
-// Initialize router
-const router = new Router();
-
 // Global navigation function
-function navigateToPage(page) {
+export function navigateToPage(page) {
+    const router = new Router();
     router.navigate(page);
 }
-
-// Export for global access
-window.router = router;
-window.navigateToPage = navigateToPage;
