@@ -467,6 +467,8 @@ function updateLanguage() {
         body.classList.add('rtl');
         html.setAttribute('dir', 'rtl');
         html.setAttribute('lang', 'ar');
+    }
+}
 function updateActiveNavigation(page) {
     // Remove active class from all nav items
     const navItems = document.querySelectorAll('.nav-item');
